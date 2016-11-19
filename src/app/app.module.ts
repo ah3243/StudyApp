@@ -4,12 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 
-import { AngularFireModule } from 'angularfire2';
-
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
 
 // Initialize Firebase
-export const firebaseConfig = {
+const firebaseConfig = {
   apiKey: ***REMOVED***,
   authDomain: ***REMOVED***,
   databaseURL: ***REMOVED***,
@@ -17,17 +16,22 @@ export const firebaseConfig = {
   messagingSenderId: ***REMOVED***
 };
 
+const firebaseAuthConfig = {
+  provider: AuthProviders.Google,
+  method: AuthMethods.Redirect
+}
+
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
   ],
-  providers: [],
+  declarations: [
+    AppComponent
+  ],
+  // providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

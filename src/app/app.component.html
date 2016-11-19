@@ -1,8 +1,10 @@
 <h1>
   {{title}}
 </h1>
-<ul>
-  <!--<li class="text" *ngfor="let item of items | async">-->
-    <!--{{item.$value}}-->
-  <!--</li>-->
-</ul>
+<div> {{ (af.auth | async)?.uid }} </div>
+<button (click)="FBlogin()">Login With Facebook</button>
+<button (click)="Glogin()">Login With Google</button>
+<button (click)="Tlogin()">Login With Twitter</button>
+<button (click)="Emlogin()">Login with email</button>
+<button (click)="overrideLogin()">Login Anonymously</button>
+<button (click)="Logout()">Logout</button>
