@@ -1,10 +1,20 @@
-<h1>
+<h2>
   {{title}}
-</h1>
-<div> {{ (af.auth | async)?.uid }} </div>
-<button (click)="FBlogin()">Login With Facebook</button>
-<button (click)="Glogin()">Login With Google</button>
-<button (click)="Tlogin()">Login With Twitter</button>
-<button (click)="Emlogin()">Login with email</button>
-<button (click)="overrideLogin()">Login Anonymously</button>
-<button (click)="Logout()">Logout</button>
+</h2>
+
+<!-- Show Login State -->
+<div *ngIf="this.af.auth | async">You are logged in</div>
+<div *ngIf="!(this.af.auth | async)">Please log in</div>
+
+<nav>
+    <a routerLink="/home">Home</a>
+    <span> &bull;
+      <a>Dashboard</a> &bull;
+      <a (click)="Logout()">Logout</a>&bull;
+      <a routerLink="/login" >Login</a> &bull;
+      <a>Sign up</a>
+    </span>
+</nav>
+
+
+<router-outlet></router-outlet> 
