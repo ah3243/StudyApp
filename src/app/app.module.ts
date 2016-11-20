@@ -11,12 +11,21 @@ import {
 } from 'angularfire2';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { TopicSearchComponent } from './topicSearch/topicSearch.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TopicDetailComponent } from './topic-detail/topic-detail.component';
+import { PaperComponent } from './paper/paper.component';
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'topicSearch', component: TopicSearchComponent },
+  { path: 'topicDetail/:id', component: TopicDetailComponent },
+  { path: 'paper/:id', component: PaperComponent },
+  { path: 'profile/:id', component: ProfileComponent },
+  { path: '', component: TopicSearchComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 
@@ -45,8 +54,12 @@ const firebaseAuthConfig = {
   ],
   declarations: [
     AppComponent,
-    HomeComponent,
-    LoginComponent
+    TopicSearchComponent,
+    LoginComponent,
+    PageNotFoundComponent,
+    ProfileComponent,
+    TopicDetailComponent,
+    PaperComponent
   ],
   // providers: [],
   bootstrap: [AppComponent]
