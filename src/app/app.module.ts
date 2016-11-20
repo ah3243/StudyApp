@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule, Routes } from '@angular/router';
 import {
   AngularFireModule,
   FIREBASE_PROVIDERS,
@@ -11,22 +10,14 @@ import {
 } from 'angularfire2';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+
 import { LoginComponent } from './login/login.component';
 import { TopicSearchComponent } from './topicSearch/topicSearch.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TopicDetailComponent } from './topic-detail/topic-detail.component';
 import { PaperComponent } from './paper/paper.component';
-
-const appRoutes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'topicSearch', component: TopicSearchComponent },
-  { path: 'topicDetail/:id', component: TopicDetailComponent },
-  { path: 'paper/:id', component: PaperComponent },
-  { path: 'profile/:id', component: ProfileComponent },
-  { path: '', component: TopicSearchComponent },
-  { path: '**', component: PageNotFoundComponent }
-];
 
 
 // Initialize Firebase
@@ -50,7 +41,7 @@ const firebaseAuthConfig = {
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,
