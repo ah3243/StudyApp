@@ -1,6 +1,21 @@
-<h1>TopicSearch</h1>
+<h2>TopicSearch</h2>
+<nav>
+    <a routerLink="/topicSearch">TopicSearch</a>
+    <span> &bull;
+      <a>Dashboard</a> &bull;
+      <a (click)="Logout()">Logout</a>&bull;
+      <a routerLink="/login" >Login</a> &bull;
+      <a>Sign up</a>
+    </span>
+</nav>
+
+<!-- Show Login State -->
+<div *ngIf="this.af.auth | async">You are logged in</div>
+<div *ngIf="!(this.af.auth | async)">Please log in</div>
+
 <ul>
   <li>topic1</li>
   <li>topic2</li>
   <li>topic3</li>
 </ul>
+<router-outlet></router-outlet>

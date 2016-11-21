@@ -12,6 +12,7 @@ import {
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './auth-guard.service';
+import { NavService } from './nav.service';
 
 import { LoginComponent } from './login/login.component';
 import { TopicSearchComponent } from './topicSearch/topicSearch.component';
@@ -53,7 +54,7 @@ const firebaseAuthConfig = {
     TopicDetailComponent,
     PaperComponent
   ],
-  providers: [ AuthGuard ],
+  providers: [ AuthGuard, NavService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

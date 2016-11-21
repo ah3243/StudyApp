@@ -12,13 +12,23 @@ import { TopicDetailComponent } from './topic-detail/topic-detail.component';
 import { PaperComponent } from './paper/paper.component';
 
 const appRoutes: Routes = [
-    { path: 'login', component: LoginComponent },
-    { path: 'topicSearch', component: TopicSearchComponent, canActivate:[AuthGuard] },
-    { path: 'topicDetail/:id', component: TopicDetailComponent },
-    { path: 'paper/:id', component: PaperComponent },
-    { path: 'profile/:id', component: ProfileComponent },
-    { path: '', component: TopicSearchComponent },
-    { path: '**', component: PageNotFoundComponent }
+    {
+        path: 'login', component: LoginComponent
+    },
+    {
+        path: 'topicSearch',
+        component: TopicSearchComponent,
+        canActivate: [AuthGuard],
+        children: [
+            { path: 'topicDetail/:id', component: TopicDetailComponent },
+            { path: 'paper/:id', component: PaperComponent },
+            { path: 'profile/:id', component: ProfileComponent },
+            { path: '', component: TopicSearchComponent },
+        ]
+    },
+    {
+        path: '**', component: TopicSearchComponent, canActivate: [AuthGuard]
+    }        
 ];
 
 @NgModule({

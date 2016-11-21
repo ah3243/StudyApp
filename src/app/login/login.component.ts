@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  constructor(public af: AngularFire) {
+  constructor(public af: AngularFire, private router: Router) {
     this.af.auth.subscribe(auth => console.log(auth));
   }
 
@@ -26,19 +28,31 @@ export class LoginComponent implements OnInit {
   //     method: AuthMethods.Popup,
   //   })
   // }
-
+  
   FBlogin() {
     this.af.auth.login({
       provider: AuthProviders.Facebook,
       method: AuthMethods.Popup,
-    });
+    }).then(function (val) {
+      console.log('Logged in with fb');
+      TakeMeTo('hawaii');
+      },
+      function (err) { console.log(err) });
   }
+
+  // Google Login
   Glogin() {
     this.af.auth.login({
       provider: AuthProviders.Google,
       method: AuthMethods.Popup
-    });
+    }).then(function (val) {
+      console.log(val);
+      }, function (err) { 
+        console.log(err);
+      });
   }
+
+  // Twitter Login
   Tlogin() {
     this.af.auth.login({
       provider: AuthProviders.Twitter,
@@ -46,6 +60,7 @@ export class LoginComponent implements OnInit {
     });  
   }
 
+  // Anonymous login
   overrideLogin() {
     this.af.auth.login({
       provider: AuthProviders.Anonymous,
