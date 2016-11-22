@@ -45,6 +45,7 @@ const firebaseAuthConfig = {
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     AppRoutingModule
   ],
+  providers: [ AuthGuard, NavService ],
   declarations: [
     AppComponent,
     TopicSearchComponent,
@@ -54,7 +55,6 @@ const firebaseAuthConfig = {
     TopicDetailComponent,
     PaperComponent
   ],
-  providers: [ AuthGuard, NavService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
