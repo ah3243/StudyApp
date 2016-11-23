@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
 
 @Component({
   selector: 'app-root',
@@ -6,12 +7,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title: string = "My Example page";
-  
-  constructor() {
+  items: FirebaseObjectObservable<any[]>;
+
+  constructor(af: AngularFire) {
+    this.items = af.database.object('/items');
   }
-  
+
+  save(newName: string) { 
+    this.items.set({name: newName});
+  }
+
+  update(newSize: string) {
+    this.items.update({ size: newSize });
+  }
+  delete() {
+    this.items.remove();
+  }  
+
 }
-
-
-

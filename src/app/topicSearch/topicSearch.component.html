@@ -13,6 +13,11 @@
 <div *ngIf="this.af.auth | async">You are logged in</div>
 <div *ngIf="!(this.af.auth | async)">Please log in</div>
 
+  <form action="submit">
+    <input type="text" placeholder="input your text here..">
+    <button type="submit">Save</button>
+  </form>
+  
 <ul>
   <li>topic1</li>
   <li>topic2</li>

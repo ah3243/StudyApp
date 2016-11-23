@@ -1,5 +1,12 @@
-<h2>
-  {{title}}
-</h2>
 
+<h1>This is the name: {{ (items | async)?.name }}</h1>
+<h2>This is the size: {{ (items | async)?.size }}</h2>
+
+<input type="text" #name placeholder="name">
+<input type="text" #size placeholder="size" >
+
+<button (click)="save(name.value)">Save Name</button>
+<button (click)="update(size.value)">Save Size</button>
+<button (click)="delete()">Delete</button>
+<br />
 <router-outlet></router-outlet> 
