@@ -21,11 +21,13 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { TopicDetailComponent } from './topic-detail/topic-detail.component';
 import { PaperComponent } from './paper/paper.component';
 
+// Import local config file
 var apiConfig = require('../apiconfig.json');
 
 // Initialize Firebase
 const firebaseConfig = {
-  apiKey: apiConfig.APIKey,
+  // Must insert own API details here..
+  apiKey: apiConfig.APIKey, 
   authDomain: apiConfig.authDomain,
   databaseURL: apiConfig.databaseURL,
   storageBucket: apiConfig.storageBucket,
