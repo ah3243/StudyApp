@@ -21,14 +21,15 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { TopicDetailComponent } from './topic-detail/topic-detail.component';
 import { PaperComponent } from './paper/paper.component';
 
+var apiConfig = require('../apiconfig.json');
 
 // Initialize Firebase
 const firebaseConfig = {
-  apiKey: ***REMOVED***,
-  authDomain: ***REMOVED***,
-  databaseURL: ***REMOVED***,
-  storageBucket: ***REMOVED***,
-  messagingSenderId: ***REMOVED***
+  apiKey: apiConfig.APIKey,
+  authDomain: apiConfig.authDomain,
+  databaseURL: apiConfig.databaseURL,
+  storageBucket: apiConfig.storageBucket,
+  messagingSenderId: apiConfig.messagingSenderId
 };
 
 const firebaseAuthConfig = {
